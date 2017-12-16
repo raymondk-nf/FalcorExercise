@@ -37,22 +37,7 @@ public indirect enum JSONGraph {
 public enum JSONPathKey {
     case String (String)
     case Number (Int)
-    
-    // TODO: Ranges
     case Range(from: Int, to: Int)
-    
-    var toString:  String {
-        get {
-            switch self {
-            case .String(let string):
-                return string
-            case .Number(let number):
-                return "\(number)"
-            case .Range(_,_):
-                return ""
-}
-        }
-    }
 }
 
 public typealias JSONRefPathKey = String
@@ -67,3 +52,29 @@ extension Array where Element == JSONRefPathKey {
         return self.map { [JSONPathKey.String($0)] }
     }
 }
+
+// TODO: Change from [String] to Sequence<String>
+extension Array where Element == JSONPathKey {
+
+    var toStringArray:  [String] {
+        get {
+            func switchOnKey(jsonPathKey: JSONPathKey) -> [String] {
+                switch jsonPathKey {
+                case .String(let string):
+                    return [string]
+                case .Number(let number):
+                    return ["\(number)"]
+                case .Range(let from, let to):
+                    return (from...to).map { String(describing: $0) }
+                }
+            }
+            
+            if self.count == 1 {
+                return switchOnKey(jsonPathKey: self.first!)
+            } else {
+                return self.map { switchOnKey(jsonPathKey: $0) }.flatMap{ $0 }
+            }
+        }
+    }
+}
+

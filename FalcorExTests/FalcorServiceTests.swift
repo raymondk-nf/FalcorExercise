@@ -299,7 +299,7 @@ class FalcorServiceTests: XCTestCase {
 
         let correctGraph = JSONGraph.Object( [
             "list": .Object(
-                ["length": .Sentinal( .Primitive( .Value( .Number(4))))
+                ["length": .Sentinal( .Primitive( .Value( .Number(6))))
                 ]),
 
             ])
@@ -494,10 +494,51 @@ class FalcorServiceTests: XCTestCase {
     
     func testListRangeZeroToOneName() {
         // follow JSON Graph references when encountered
-        
+
         let jsonPath = [
             [ JSONPathKey.String("list")],
             [ JSONPathKey.Range(from: 0, to: 1)],
+            [ JSONPathKey.String("name")],
+            ]
+
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultGraph = nil
+        }
+
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+
+        let correctGraph = JSONGraph.Object( [
+            "list": .Object(
+                ["0": .Sentinal( .Ref( ["videosById", "22" ] ) ),
+                 "1": .Sentinal(.Ref( ["videosById", "44" ] ) )
+                ]),
+
+            "videosById": .Object( [
+                "22": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Die Hard"))))
+                    ]),
+                "44": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Get Out"))))
+                    ])
+
+                ])
+            ])
+        let correctString = String(describing: correctGraph)
+
+        XCTAssertEqual(resultString, correctString)
+
+    }
+    
+    func testListRangeZeroToFourName() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 4)],
             [ JSONPathKey.String("name")],
             ]
         
@@ -514,7 +555,10 @@ class FalcorServiceTests: XCTestCase {
         let correctGraph = JSONGraph.Object( [
             "list": .Object(
                 ["0": .Sentinal( .Ref( ["videosById", "22" ] ) ),
-                 "1": .Sentinal(.Ref( ["videosById", "44" ] ) )
+                 "1": .Sentinal(.Ref( ["videosById", "44" ] ) ),
+                 "2": .Object([:]),
+                 "3": .Sentinal(.Ref( ["videosById", "66" ] ) ),
+                 "4": .Sentinal(.Ref( ["videosById", "88" ] ) ),
                 ]),
             
             "videosById": .Object( [
@@ -523,6 +567,107 @@ class FalcorServiceTests: XCTestCase {
                     ]),
                 "44": .Object( [
                     "name": .Sentinal( .Primitive( .Value( .String("Get Out"))))
+                    ]),
+                "66": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Stranger Things")))),
+                    ]),
+                "88": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("The Crown")))),
+                    ])
+                
+                ])
+            ])
+        let correctString = String(describing: correctGraph)
+        
+        XCTAssertEqual(resultString, correctString)
+        
+    }
+    
+    func testListRangeZeroToTwoFourNameRating() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 2), JSONPathKey.Number(4)],
+            [ JSONPathKey.String("name"), JSONPathKey.String("rating")],
+            ]
+        
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultGraph = nil
+        }
+        
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+        
+        let correctGraph = JSONGraph.Object( [
+            "list": .Object(
+                ["0": .Sentinal( .Ref( ["videosById", "22" ] ) ),
+                 "1": .Sentinal(.Ref( ["videosById", "44" ] ) ),
+                 "2": .Object([:]),
+                 "4": .Sentinal(.Ref( ["videosById", "88" ] ) ),
+                 ]),
+            
+            "videosById": .Object( [
+                "22": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Die Hard")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(5)))),
+                    ]),
+                "44": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Get Out")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(5)))),
+                    ]),
+                "88": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("The Crown")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(3)))),
+                    ])
+                
+                ])
+            ])
+        let correctString = String(describing: correctGraph)
+        
+        XCTAssertEqual(resultString, correctString)
+        
+    }
+    
+    func testVideosByIdZeroToHundredNameRating() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("videosById")],
+            [ JSONPathKey.Range(from: 0, to: 100)],
+            [ JSONPathKey.String("name"), JSONPathKey.String("rating")],
+            ]
+        
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultGraph = nil
+        }
+        
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+        
+        let correctGraph = JSONGraph.Object( [
+            "videosById": .Object( [
+                "22": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Die Hard")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(5)))),
+                    ]),
+                "44": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Get Out")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(5)))),
+                    ]),
+                "66": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Stranger Things")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(1)))),
+                    ]),
+                "88": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("The Crown")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(3)))),
                     ])
                 
                 ])

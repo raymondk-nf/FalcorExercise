@@ -12,7 +12,7 @@
  open class FalcorService {
     
     typealias JsonGraphDictionaryOptionalTuple = ( jsonGraphDictionary:(String, JSONGraph)?, optimizedPaths: [JSONPathSet]? )
-    typealias JsonGraphOptimizedPathsTuple = (jsonGraph: JSONGraph, optimizedPaths: [JSONPathSet] )
+    typealias JsonGraphOptimizedPathsTuple = (jsonGraph: JSONGraph, optimizedPaths: [JSONPathSet]? )
 
     public func getJSONGraph(jsonGraph: JSONGraph, path: JSONPathSet) throws -> JSONGraph {
         
@@ -43,7 +43,9 @@
                 return resultGraph
             }
 
-            optimizedPaths += resultOptimizedPaths
+            if let resultOptimizedPaths = resultOptimizedPaths {
+                optimizedPaths += resultOptimizedPaths
+            }
         }
         
         return JSONGraph.Object(buildJSONGraph)
@@ -56,17 +58,15 @@
         case .Object(let dictionary):
             guard !path.isEmpty else { throw FalcorError.InvalidAttempt }
 
-            let pathKeySet = path.first!
+            let pathKeySet = path.first!.toStringArray
             let subPathSlice = path.dropFirst()
             
-            let jsonGraphDictionaryOptionalTupleArray = try pathKeySet.map{ (jsonPathKey) -> JsonGraphDictionaryOptionalTuple in
-                
-                let stringKey = jsonPathKey.toString
+            let jsonGraphDictionaryOptionalTupleArray = try pathKeySet.map{ (stringKey) -> JsonGraphDictionaryOptionalTuple in
                 
                 guard let subGraph = dictionary[stringKey] else { return ( nil, nil) }
-                
+
                 let (resultGraph, resultOptimizedPaths) = try getJSONGraph(jsonGraph: subGraph, path: subPathSlice)
-                
+
                 return ( (stringKey, resultGraph), resultOptimizedPaths)
             }
 
@@ -91,10 +91,10 @@
             case .Error(_):
                 fallthrough
             case .Primitive(_):
-                return (jsonGraph, [])
+                return (jsonGraph, nil)
                 
             case .Ref(let refPath):
-                return (jsonGraph, (path.isEmpty) ? [] : [ refPath.convertToJSONPathSet() + path ] )
+                return (jsonGraph, (path.isEmpty) ? nil : [ refPath.convertToJSONPathSet() + path ] )
             }
             
         }

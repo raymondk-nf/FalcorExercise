@@ -19,12 +19,10 @@ open class FalcorClient {
             case .Object(let dictionary):
                 guard path.count > 0 else { throw FalcorError.InvalidAttempt }
                 
-                let pathKeySet = path.first!
+                let pathKeySet = path.first!.toStringArray
                 let subPathSlice = path.dropFirst()
                 
-                let jsonTuples = try pathKeySet.map{ (jsonPathKey) -> (String, JSON)? in
-                    
-                    let stringKey = jsonPathKey.toString
+                let jsonTuples = try pathKeySet.map{ (stringKey) -> (String, JSON)? in
                     let json: JSON
                     
                     guard let subGraph = dictionary[stringKey] else { return  nil }
@@ -70,9 +68,9 @@ open class FalcorClient {
             case .Ref(let jsonRefPath):
                 guard let subPathSlice = subPathSlice, !subPathSlice.isEmpty else { return nil }
                 
-                guard let resolvedJsonGraph = resolveJsonPathReference(jsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: rootJsonGraph) else { return JSON.Object([:]) }
+//                guard let resolvedJsonGraph = resolveJsonPathReference(jsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: rootJsonGraph) else { return JSON.Object([:]) }
 
-//                guard let resolvedJsonGraph = resolveJsonPathReferenceLoop(rootJsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath)) else { return JSON.Object([:]) }
+                guard let resolvedJsonGraph = resolveJsonPathReferenceLoop(rootJsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath)) else { return JSON.Object([:]) }
 
                 
                 return try getJSON(currentJsonGraph: resolvedJsonGraph, path: subPathSlice)

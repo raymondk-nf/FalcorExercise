@@ -295,7 +295,7 @@ class FalcorClientTests: XCTestCase {
 
         let correctJSON = JSON.Object([
             "list": .Object([
-                "length": .Value( .Number(4))
+                "length": .Value( .Number(6))
                 ])
 
             ])
@@ -564,12 +564,12 @@ class FalcorClientTests: XCTestCase {
     
     // MARK: - Extra Tests for resolving paths
     
-    func testList3Name() {
+    func testList5Name() {
         // follow JSON Graph references when encountered
         
         let jsonPath = [
             [ JSONPathKey.String("list")],
-            [ JSONPathKey.Number(3)],
+            [ JSONPathKey.Number(5)],
             [ JSONPathKey.String("name")],
             ]
         
@@ -585,7 +585,7 @@ class FalcorClientTests: XCTestCase {
         
         let correctJSON = JSON.Object([
             "list": .Object([
-                "3": JSON.Object([:])
+                "5": JSON.Object([:])
                 ])
             
             ])
@@ -681,6 +681,234 @@ class FalcorClientTests: XCTestCase {
 //        print ( falcorClient.tailSum(x: 100000) )
 //    }
     
+    //MARK: - Test Ranges
+    
+    func testListRangeZeroToOneName() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 1)],
+            [ JSONPathKey.String("name")],
+            ]
+        
+        let resultJson: JSON?
+        do {
+            resultJson = try falcorClient.getJSON( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultJson = nil
+        }
+        
+        XCTAssertNotNil(resultJson)
+        let resultString = String(describing: resultJson!)
+        
+        let correctJSON = JSON.Object([
+            "list": .Object([
+                "0": .Object([
+                    "name": .Value(.String("Die Hard"))
+                    ]),
+                "1": .Object([
+                    "name": .Value(.String("Get Out"))
+                    ])
+                ])
+            
+            ])
+        
+        let correctString = String(describing: correctJSON)
+        
+        XCTAssertEqual(resultString, correctString)
+        
+    }
+    
+    func testListRangeZeroToFourName() {
+        // follow JSON Graph references when encountered
+
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 4)],
+            [ JSONPathKey.String("name")],
+            ]
+
+        let resultJson: JSON?
+        do {
+            resultJson = try falcorClient.getJSON( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultJson = nil
+        }
+
+        XCTAssertNotNil(resultJson)
+        let resultString = String(describing: resultJson!)
+
+        let correctJSON = JSON.Object([
+            "list": .Object([
+                "0": .Object([
+                    "name": .Value(.String("Die Hard"))
+                    ]),
+                "1": .Object([
+                    "name": .Value(.String("Get Out"))
+                    ]),
+                "2": .Object([:]),
+                "3": .Object([
+                    "name": .Value( .String("Stranger Things"))
+                    ]),
+                "4": .Object([
+                    "name": .Value( .String("The Crown"))
+                    ]),
+
+                ])
+            
+            ])
+        
+        let correctString = String(describing: correctJSON)
+
+        XCTAssertEqual(resultString, correctString)
+
+    }
+
+    func testListRangeZeroToTwoFourNameRating() {
+        // follow JSON Graph references when encountered
+
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 2), JSONPathKey.Number(4)],
+            [ JSONPathKey.String("name"), JSONPathKey.String("rating")],
+            ]
+
+        let resultJSON: JSON?
+        do {
+            resultJSON = try falcorClient.getJSON( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultJSON = nil
+        }
+
+        XCTAssertNotNil(resultJSON)
+        let resultString = String(describing: resultJSON!)
+
+        let correctJSON = JSON.Object([
+            "list": .Object([
+                "0": .Object([
+                    "name": .Value(.String("Die Hard")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "1": .Object([
+                    "name": .Value(.String("Get Out")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "2": .Object([:]),
+                "4": .Object([
+                    "name": .Value( .String("The Crown")),
+                    "rating": .Value( .Number(3)),
+                    ])
+                ])
+            
+            ])
+        
+        let correctString = String(describing: correctJSON)
+
+        XCTAssertEqual(resultString, correctString)
+
+    }
+    
+    func testListRangeNegOneTo10AndLengthNameRating() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: -1, to: 10), JSONPathKey.String("length")],
+            [ JSONPathKey.String("name"), JSONPathKey.String("rating")],
+            ]
+        
+        let resultJSON: JSON?
+        do {
+            resultJSON = try falcorClient.getJSON( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultJSON = nil
+        }
+        
+        XCTAssertNotNil(resultJSON)
+        let resultString = String(describing: resultJSON!)
+        
+        let correctJSON = JSON.Object([
+            "list": .Object([
+                "0": .Object([
+                    "name": .Value(.String("Die Hard")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "1": .Object([
+                    "name": .Value(.String("Get Out")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "2": .Object([:]),
+                "3": .Object([
+                    "name": .Value( .String("Stranger Things")),
+                    "rating": .Value( .Number(1)),
+                    ]),
+                "4": .Object([
+                    "name": .Value( .String("The Crown")),
+                    "rating": .Value( .Number(3)),
+                    ]),
+                "5": .Object([:]),
+                "-1": .Object([
+                    "name": .Value(.String("Get Out")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "length": .Value(.Number(6))
+                ])
+            
+            ])
+        
+        let correctString = String(describing: correctJSON)
+        
+        XCTAssertEqual(resultString, correctString)
+        
+    }
+
+    func testVideosByIdZeroToHundredNameRating() {
+        // follow JSON Graph references when encountered
+
+        let jsonPath = [
+            [ JSONPathKey.String("videosById")],
+            [ JSONPathKey.Range(from: 0, to: 100)],
+            [ JSONPathKey.String("name"), JSONPathKey.String("rating")],
+            ]
+
+        let resultJSON: JSON?
+        do {
+            resultJSON = try falcorClient.getJSON( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultJSON = nil
+        }
+
+        XCTAssertNotNil(resultJSON)
+        let resultString = String(describing: resultJSON!)
+
+        let correctJSON = JSON.Object([
+            "videosById": .Object([
+                "22": .Object([
+                    "name": .Value(.String("Die Hard")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "44": .Object([
+                    "name": .Value(.String("Get Out")),
+                    "rating": .Value( .Number(5)),
+                    ]),
+                "66": .Object([
+                    "name": .Value( .String("Stranger Things")),
+                    "rating": .Value( .Number(1)),
+                    ]),
+                "88": .Object([
+                    "name": .Value( .String("The Crown")),
+                    "rating": .Value( .Number(3)),
+                    ])
+                ])
+            
+            ])
+        
+        let correctString = String(describing: correctJSON)
+
+        XCTAssertEqual(resultString, correctString)
+
+    }
 }
 
 

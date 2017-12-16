@@ -25,9 +25,11 @@ class Model {
                  "2": .Object([
                     "0": .Sentinal(.Ref( ["videosById", "44" ] ) )
                     ]),
-                 "3": .Sentinal(.Ref( ["episodesById", "23" ] ) ),
+                 "3": .Sentinal(.Ref( ["videosById", "66" ] ) ),
+                 "4": .Sentinal(.Ref( ["videosById", "88" ] ) ),
+                 "5": .Sentinal(.Ref( ["episodesById", "23" ] ) ),
                  "-1": .Sentinal(.Ref( ["list", "1" ]  ) ),
-                 "length": .Sentinal( .Primitive( .Value( .Number(4))))
+                 "length": .Sentinal( .Primitive( .Value( .Number(6))))
                 ]),
             
             "videosById": .Object( [
@@ -39,6 +41,16 @@ class Model {
                 "44": .Object( [
                     "name": .Sentinal( .Primitive( .Value( .String("Get Out")))),
                     "rating": .Sentinal( .Primitive( .Value( .Number(5)))),
+                    "bookmark": .Sentinal( .Error( .Value( .String("Couldn't retrieve bookmark"))))
+                    ]),
+                "66": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Stranger Things")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(1)))),
+                    "bookmark": .Sentinal( .Atom( .Value( .Number(123))))
+                    ]),
+                "88": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("The Crown")))),
+                    "rating": .Sentinal( .Primitive( .Value( .Number(3)))),
                     "bookmark": .Sentinal( .Error( .Value( .String("Couldn't retrieve bookmark"))))
                     ])
 

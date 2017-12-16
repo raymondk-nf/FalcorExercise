@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D1269F91FE4844000A0C2E9 /* dictionary-algs4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D687D211FE4813A00E83CED /* dictionary-algs4.txt */; };
+		1D1269FA1FE4844000A0C2E9 /* dictionary-yawl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D687D201FE4813900E83CED /* dictionary-yawl.txt */; };
 		1D1FBFDF1FE07B8400B5A12D /* FalcorSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBFDE1FE07B8400B5A12D /* FalcorSearch.swift */; };
 		1D1FBFE11FE07C2E00B5A12D /* FalcorSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */; };
 		1D1FBFE31FE1D26300B5A12D /* notes in Resources */ = {isa = PBXBuildFile; fileRef = 1D1FBFE21FE1D26300B5A12D /* notes */; };
 		1D4DC6B51FCF600000B517BA /* DictionaryEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4DC6B41FCF600000B517BA /* DictionaryEx.swift */; };
+		1D687D1A1FE44FFB00E83CED /* FalcorArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D687D191FE44FFB00E83CED /* FalcorArrayTests.swift */; };
+		1D687D1C1FE47C6000E83CED /* Boggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D687D1B1FE47C6000E83CED /* Boggle.swift */; };
+		1D687D1E1FE47C7100E83CED /* BoggleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D687D1D1FE47C7100E83CED /* BoggleTests.swift */; };
+		1D687D221FE4813A00E83CED /* dictionary-yawl.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D687D201FE4813900E83CED /* dictionary-yawl.txt */; };
+		1D687D231FE4813A00E83CED /* dictionary-algs4.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1D687D211FE4813A00E83CED /* dictionary-algs4.txt */; };
 		1D9058A81FD093DE00ACD225 /* FalcorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A71FD093DE00ACD225 /* FalcorClient.swift */; };
 		1D9058AA1FD0A35700ACD225 /* FalcorClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */; };
 		1D9058AC1FD0A54200ACD225 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058AB1FD0A54200ACD225 /* Error.swift */; };
@@ -37,6 +44,11 @@
 		1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorSearchTests.swift; sourceTree = "<group>"; };
 		1D1FBFE21FE1D26300B5A12D /* notes */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes; sourceTree = "<group>"; };
 		1D4DC6B41FCF600000B517BA /* DictionaryEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEx.swift; sourceTree = "<group>"; };
+		1D687D191FE44FFB00E83CED /* FalcorArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorArrayTests.swift; sourceTree = "<group>"; };
+		1D687D1B1FE47C6000E83CED /* Boggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boggle.swift; sourceTree = "<group>"; };
+		1D687D1D1FE47C7100E83CED /* BoggleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoggleTests.swift; sourceTree = "<group>"; };
+		1D687D201FE4813900E83CED /* dictionary-yawl.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dictionary-yawl.txt"; sourceTree = "<group>"; };
+		1D687D211FE4813A00E83CED /* dictionary-algs4.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "dictionary-algs4.txt"; sourceTree = "<group>"; };
 		1D9058A71FD093DE00ACD225 /* FalcorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClient.swift; sourceTree = "<group>"; };
 		1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClientTests.swift; sourceTree = "<group>"; };
 		1D9058AB1FD0A54200ACD225 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
@@ -70,6 +82,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D687D1F1FE4812B00E83CED /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1D687D211FE4813A00E83CED /* dictionary-algs4.txt */,
+				1D687D201FE4813900E83CED /* dictionary-yawl.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		1D9058A51FD092B600ACD225 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +112,7 @@
 		1DC4F3061FC4988400AFF654 = {
 			isa = PBXGroup;
 			children = (
+				1D687D1F1FE4812B00E83CED /* Resources */,
 				1DC4F3121FC4988400AFF654 /* FalcorEx */,
 				1DC4F31D1FC4988400AFF654 /* FalcorExTests */,
 				1DC4F3111FC4988400AFF654 /* Products */,
@@ -112,6 +134,7 @@
 				1DC4F32A1FC498B800AFF654 /* FalcorService.swift */,
 				1D9058A71FD093DE00ACD225 /* FalcorClient.swift */,
 				1D1FBFDE1FE07B8400B5A12D /* FalcorSearch.swift */,
+				1D687D1B1FE47C6000E83CED /* Boggle.swift */,
 				1D9058A51FD092B600ACD225 /* Model */,
 				1D9058A61FD092CC00ACD225 /* Extensions */,
 				1DC4F3131FC4988400AFF654 /* FalcorEx.h */,
@@ -127,6 +150,8 @@
 				1DC4F31E1FC4988400AFF654 /* FalcorServiceTests.swift */,
 				1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */,
 				1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */,
+				1D687D191FE44FFB00E83CED /* FalcorArrayTests.swift */,
+				1D687D1D1FE47C7100E83CED /* BoggleTests.swift */,
 				1DC4F3201FC4988400AFF654 /* Info.plist */,
 			);
 			path = FalcorExTests;
@@ -226,7 +251,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D687D231FE4813A00E83CED /* dictionary-algs4.txt in Resources */,
 				1D1FBFE31FE1D26300B5A12D /* notes in Resources */,
+				1D687D221FE4813A00E83CED /* dictionary-yawl.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +261,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D1269F91FE4844000A0C2E9 /* dictionary-algs4.txt in Resources */,
+				1D1269FA1FE4844000A0C2E9 /* dictionary-yawl.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +280,7 @@
 				1DC4F3311FC4DCBC00AFF654 /* Syntax.swift in Sources */,
 				1D9058AC1FD0A54200ACD225 /* Error.swift in Sources */,
 				1D4DC6B51FCF600000B517BA /* DictionaryEx.swift in Sources */,
+				1D687D1C1FE47C6000E83CED /* Boggle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DC4F31F1FC4988400AFF654 /* FalcorServiceTests.swift in Sources */,
+				1D687D1E1FE47C7100E83CED /* BoggleTests.swift in Sources */,
 				1D1FBFE11FE07C2E00B5A12D /* FalcorSearchTests.swift in Sources */,
+				1D687D1A1FE44FFB00E83CED /* FalcorArrayTests.swift in Sources */,
 				1D9058AA1FD0A35700ACD225 /* FalcorClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
