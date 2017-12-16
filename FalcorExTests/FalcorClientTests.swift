@@ -658,6 +658,29 @@ class FalcorClientTests: XCTestCase {
         
     }
     
+    func testResolveRefPathEpisodesByIdUsingLoop() {
+        let jsonRefPath = [ "episodesById"]
+        
+        let resultJSON: JSONGraph? = falcorClient.resolveJsonPathReferenceLoop(rootJsonGraph: jsonGraph, refPath: ArraySlice(jsonRefPath))
+        
+        XCTAssertNotNil(resultJSON)
+        let resultString = (resultJSON != nil ) ? String(describing: resultJSON!) : ""
+        
+        let correctJSON = JSONGraph.Sentinal( .Atom( .Value( .Number(73973))))
+        
+        let correctString = String(describing: correctJSON)
+        
+        XCTAssertEqual(resultString, correctString)
+        
+    }
+    
+    //MARK: - Test Tail Recursion
+    
+//    func testSumRecursion() {
+//
+//        print ( falcorClient.tailSum(x: 100000) )
+//    }
+    
 }
 
 

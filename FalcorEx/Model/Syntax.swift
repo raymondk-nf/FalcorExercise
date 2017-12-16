@@ -39,7 +39,7 @@ public enum JSONPathKey {
     case Number (Int)
     
     // TODO: Ranges
-//    case Range(Int, Int)
+    case Range(from: Int, to: Int)
     
     var toString:  String {
         get {
@@ -48,7 +48,9 @@ public enum JSONPathKey {
                 return string
             case .Number(let number):
                 return "\(number)"
-            }
+            case .Range(_,_):
+                return ""
+}
         }
     }
 }

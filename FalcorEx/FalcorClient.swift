@@ -71,7 +71,10 @@ open class FalcorClient {
                 guard let subPathSlice = subPathSlice, !subPathSlice.isEmpty else { return nil }
                 
                 guard let resolvedJsonGraph = resolveJsonPathReference(jsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: rootJsonGraph) else { return JSON.Object([:]) }
-                    
+
+//                guard let resolvedJsonGraph = resolveJsonPathReferenceLoop(rootJsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath)) else { return JSON.Object([:]) }
+
+                
                 return try getJSON(currentJsonGraph: resolvedJsonGraph, path: subPathSlice)
 
             }
@@ -80,12 +83,44 @@ open class FalcorClient {
         return try getJSON(currentJsonGraph: rootJsonGraph, path: ArraySlice(path))
     }
     
-    
-    
-    // READ: Tail recursion
-    // 1st TRY: Reduce after loop
-    // 2nd try TODO: Re-write this as a loop
-    // write recursive ADD with two BIG numbers.  Observe: should not see a stack overflow
+    func resolveJsonPathReferenceLoop(rootJsonGraph: JSONGraph, refPath: ArraySlice<JSONRefPathKey> ) -> JSONGraph? {
+        
+        var jsonGraph = rootJsonGraph
+        var refPath = refPath
+        var resolve = false
+        
+        while (!refPath.isEmpty || resolve) {
+            resolve = false
+            
+            switch  jsonGraph {
+            case .Object(let dictionary):
+                guard refPath.count > 0 else { return jsonGraph }
+                guard let subJsonGraph = dictionary[ refPath.removeFirst() ] else { return jsonGraph }
+                jsonGraph = subJsonGraph
+                resolve = true
+                
+            case .Sentinal(let sentinal):
+                
+                guard refPath.isEmpty else { return nil }
+                
+                switch (sentinal) {
+                case .Atom(_):
+                    fallthrough
+                case .Error(_):
+                    fallthrough
+                case .Primitive(_):
+                    return jsonGraph
+                    
+                case .Ref(let jsonRefPath):
+                    jsonGraph = rootJsonGraph
+                    refPath = ArraySlice(jsonRefPath)
+                }
+            }
+        }
+        
+        return jsonGraph
+    }
+
     func resolveJsonPathReference(jsonGraph: JSONGraph, refPath: ArraySlice<JSONRefPathKey>, rootJsonGraph: JSONGraph ) -> JSONGraph? {
         
         switch jsonGraph {
@@ -96,21 +131,25 @@ open class FalcorClient {
 
         case .Sentinal(let sentinal):
  
-            if refPath.isEmpty {
-                switch (sentinal) {
-                case .Atom(_):
-                    return jsonGraph
-                case .Error(_):
-                    return jsonGraph
-                case .Primitive(_):
-                    return jsonGraph
-                case .Ref(let jsonRefPath):
-                    return resolveJsonPathReference(jsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: rootJsonGraph)
-                }
-            } else {
-                return nil
+            guard refPath.isEmpty else { return nil }
+            switch (sentinal) {
+            case .Atom(_):
+                return jsonGraph
+            case .Error(_):
+                return jsonGraph
+            case .Primitive(_):
+                return jsonGraph
+            case .Ref(let jsonRefPath):
+                return resolveJsonPathReference(jsonGraph: rootJsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: rootJsonGraph)
             }
-
+        }
+    }
+    
+    func tailSum(x:Int , total:Int = 0) -> Int {
+        if (x==0) {
+            return total
+        } else {
+            return tailSum(x:x-1, total: total+x)
         }
     }
 }

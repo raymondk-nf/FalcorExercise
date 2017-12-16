@@ -15,3 +15,8 @@
 
 // TODO: Carry over optimizations to getJSONGraph - Tuple return value and simplying reduce
 
+// READ: Tail recursion
+// 1st TRY: Reduce
+// 2nd try TODO: Re-write this as a loop
+// write recursive Sum.  Observe: should not see a stack overflow
+

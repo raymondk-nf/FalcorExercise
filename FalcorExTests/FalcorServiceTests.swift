@@ -441,6 +441,8 @@ class FalcorServiceTests: XCTestCase {
         }
         XCTAssertNil(resultGraph)
     }
+    
+    //MARK: - Test empty paths
 
     // Test case, empty path to atom json, return atom
     func testEmptyPathToJsonAtom() {
@@ -486,5 +488,48 @@ class FalcorServiceTests: XCTestCase {
         let correctString = String(describing: correctGraph)
         
         XCTAssertEqual(resultString, correctString)
+    }
+    
+    //MARK: - Test Ranges
+    
+    func testListRangeZeroToOneName() {
+        // follow JSON Graph references when encountered
+        
+        let jsonPath = [
+            [ JSONPathKey.String("list")],
+            [ JSONPathKey.Range(from: 0, to: 1)],
+            [ JSONPathKey.String("name")],
+            ]
+        
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: jsonGraph,  path: jsonPath)
+        } catch {
+            resultGraph = nil
+        }
+        
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+        
+        let correctGraph = JSONGraph.Object( [
+            "list": .Object(
+                ["0": .Sentinal( .Ref( ["videosById", "22" ] ) ),
+                 "1": .Sentinal(.Ref( ["videosById", "44" ] ) )
+                ]),
+            
+            "videosById": .Object( [
+                "22": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Die Hard"))))
+                    ]),
+                "44": .Object( [
+                    "name": .Sentinal( .Primitive( .Value( .String("Get Out"))))
+                    ])
+                
+                ])
+            ])
+        let correctString = String(describing: correctGraph)
+        
+        XCTAssertEqual(resultString, correctString)
+        
     }
 }
