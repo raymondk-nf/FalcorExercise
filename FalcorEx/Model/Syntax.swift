@@ -41,7 +41,7 @@ public enum JSONPathKey {
     // TODO: Ranges
 //    case Range(Int, Int)
     
-    var associatedValue:  String {
+    var toString:  String {
         get {
             switch self {
             case .String(let string):

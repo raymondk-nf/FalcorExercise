@@ -442,11 +442,49 @@ class FalcorServiceTests: XCTestCase {
         XCTAssertNil(resultGraph)
     }
 
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    // Test case, empty path to atom json, return atom
+    func testEmptyPathToJsonAtom() {
+        let jsonPath = [[JSONPathKey]]()
+        let modelJsonGraph = JSONGraph.Sentinal(.Atom(
+            JSON.Value(.Number(5))
+            ))
+        
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: modelJsonGraph,  path: jsonPath )
+        } catch {
+            resultGraph = nil
         }
+        
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+        
+        let correctGraph = modelJsonGraph
+        let correctString = String(describing: correctGraph)
+        
+        XCTAssertEqual(resultString, correctString)
     }
     
+    // Test case, empty path to ref json, return ??
+    func testEmptyPathToJsonRef() {
+        let jsonPath = [[JSONPathKey]]()
+        let modelJsonGraph = JSONGraph.Sentinal(.Ref(
+            ["videosById", "22"]
+            ))
+        
+        let resultGraph: JSONGraph?
+        do {
+            resultGraph = try falcorService.getJSONGraph( jsonGraph: modelJsonGraph,  path: jsonPath )
+        } catch {
+            resultGraph = nil
+        }
+        
+        XCTAssertNotNil(resultGraph)
+        let resultString = String(describing: resultGraph!)
+        
+        let correctGraph = modelJsonGraph
+        let correctString = String(describing: correctGraph)
+        
+        XCTAssertEqual(resultString, correctString)
+    }
 }

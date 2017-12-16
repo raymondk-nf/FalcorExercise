@@ -11,18 +11,19 @@
  
  open class FalcorService {
     
-    typealias JsonGraphTuple = (jsonGraph: JSONGraph?, optimizedPaths: [JSONPathSet]? )
+    typealias JsonGraphDictionaryOptionalTuple = ( jsonGraphDictionary:(String, JSONGraph)?, optimizedPaths: [JSONPathSet]? )
+    typealias JsonGraphOptimizedPathsTuple = (jsonGraph: JSONGraph, optimizedPaths: [JSONPathSet] )
 
-    public func getJSONGraph(jsonGraph: JSONGraph, path: JSONPathSet) throws -> JSONGraph? {
+    public func getJSONGraph(jsonGraph: JSONGraph, path: JSONPathSet) throws -> JSONGraph {
         
         var buildJSONGraph = [String:JSONGraph]()
         var optimizedPaths = [path]
         
         while !optimizedPaths.isEmpty {
             
-            let resultTuple: JsonGraphTuple
+            let resultTuple: JsonGraphOptimizedPathsTuple
             do {
-                resultTuple = try getJSONGraphRecursive(jsonGraph: jsonGraph, path: ArraySlice(optimizedPaths.removeFirst()))
+                resultTuple = try getJSONGraph(jsonGraph: jsonGraph, path: ArraySlice(optimizedPaths.removeFirst()))
             }
             catch FalcorError.InvalidAttempt {
                 if !buildJSONGraph.isEmpty {
@@ -33,89 +34,68 @@
                 }
             }
             
-            if let graph = resultTuple.jsonGraph,
-            case .Object(let dictionary) = graph {
-                    buildJSONGraph = buildJSONGraph.deepMergeJSONGraph(with: dictionary )
-            }
+            let (resultGraph, resultOptimizedPaths) = resultTuple
             
-            if let op = resultTuple.optimizedPaths {
-                optimizedPaths = [optimizedPaths, op].flatMap {$0}
+            switch (resultGraph) {
+            case .Object(let dictionary):
+                buildJSONGraph = buildJSONGraph.deepMergeJSONGraph(with: dictionary )
+            case .Sentinal(_):
+                return resultGraph
             }
+
+            optimizedPaths += resultOptimizedPaths
         }
         
         return JSONGraph.Object(buildJSONGraph)
         
     }
     
-    func getJSONGraphRecursive(jsonGraph: JSONGraph, path: ArraySlice<JSONPathKeySet> ) throws -> JsonGraphTuple  {
+    func getJSONGraph(jsonGraph: JSONGraph, path: ArraySlice<JSONPathKeySet> ) throws -> JsonGraphOptimizedPathsTuple  {
         
         switch jsonGraph {
-        case .Object(_):
+        case .Object(let dictionary):
             guard !path.isEmpty else { throw FalcorError.InvalidAttempt }
 
-        case .Sentinal(let sentinal):
-            if case .Ref(let refPath) = sentinal {
-                return (jsonGraph, (path.isEmpty) ? nil : [ refPath.convertToJSONPathSet() + path ] )
-            } else {
-                return (jsonGraph, nil)
-            }
-        }
-        
-        let pathKeySet = path.first!
-
-        return try pathKeySet.map{ (jsonPathKey) -> JsonGraphTuple in
-            
-            let stringKey = jsonPathKey.associatedValue
+            let pathKeySet = path.first!
             let subPathSlice = path.dropFirst()
             
-            guard case .Object(let dictionary) = jsonGraph else { throw FalcorError.InvalidJSONGraph }
-            guard let subGraph = dictionary[stringKey] else { return ( JSONGraph.Object([:]), nil) }
-            
-            let resultTuple = try getJSONGraphRecursive(jsonGraph: subGraph, path: subPathSlice)
-        
-            let resultJSONGraph: JSONGraph?
-            let resultOptimizedPaths: [JSONPathSet]?
-            
-            if let graph = resultTuple.jsonGraph {
-                resultJSONGraph = JSONGraph.Object([stringKey: graph])
-            } else {
-                resultJSONGraph = nil
-            }
-            
-            if let op = resultTuple.optimizedPaths {
-                resultOptimizedPaths = op
-            } else {
-                resultOptimizedPaths = nil
-            }
-            
-            return (resultJSONGraph, resultOptimizedPaths)
-            
-        }.reduce( (JSONGraph.Object([String:JSONGraph]()), [JSONPathSet]() ) ) { (accumTuple, currentTuple) in
-            
-            
-            let resultJSONGraph: JSONGraph?
-            
-            if let newJsonGraph = currentTuple.jsonGraph,
-                let resultJsonGraph = accumTuple.jsonGraph,
-                case .Object(let newDictionary) = newJsonGraph,
-                case .Object(let resultDictionary) = resultJsonGraph {
-                resultJSONGraph = JSONGraph.Object( resultDictionary.deepMergeJSONGraph(with: newDictionary) )
+            let jsonGraphDictionaryOptionalTupleArray = try pathKeySet.map{ (jsonPathKey) -> JsonGraphDictionaryOptionalTuple in
                 
-            } else {
-                resultJSONGraph = nil
-            }
-            
-            let optimizedPaths: [JSONPathSet]?
-            
-            if let newOptimizedPaths = currentTuple.optimizedPaths,
-                let resultOptimizedPaths = accumTuple.optimizedPaths {
+                let stringKey = jsonPathKey.toString
                 
-                optimizedPaths = [resultOptimizedPaths, newOptimizedPaths].flatMap {$0}
-            } else {
-                optimizedPaths =  nil
+                guard let subGraph = dictionary[stringKey] else { return ( nil, nil) }
+                
+                let (resultGraph, resultOptimizedPaths) = try getJSONGraph(jsonGraph: subGraph, path: subPathSlice)
+                
+                return ( (stringKey, resultGraph), resultOptimizedPaths)
             }
+
+            // Extract dictionary tuples and filter out nils
+            let jsonGraphTupleArray = jsonGraphDictionaryOptionalTupleArray.flatMap { $0.jsonGraphDictionary }
+            let combinedJsonGraph = JSONGraph.Object( Dictionary(uniqueKeysWithValues: jsonGraphTupleArray) )
             
-            return (resultJSONGraph, optimizedPaths)
+            // Extract optimized paths and filter out nils
+            // Then flatten array of arrays again
+            // jsonGraphDictionaryOptionalTupleArray = [[JSONPathSet]?]
+            // jsonGraphDictionaryOptionalTupleArray.flatMap { $0.optimizedPaths } = [[ JSONPathSet ]]
+            // jsonGraphDictionaryOptionalTupleArray.flatMap { $0.optimizedPaths }.flatMap { $0 } = [ JSONPathSet ]
+            let combinedOptimizedPaths = jsonGraphDictionaryOptionalTupleArray.flatMap { $0.optimizedPaths }.flatMap { $0 }
+
+            return (combinedJsonGraph, combinedOptimizedPaths)
+            
+        case .Sentinal(let sentinal):
+            
+            switch (sentinal) {
+            case .Atom(_):
+                fallthrough
+            case .Error(_):
+                fallthrough
+            case .Primitive(_):
+                return (jsonGraph, [])
+                
+            case .Ref(let refPath):
+                return (jsonGraph, (path.isEmpty) ? [] : [ refPath.convertToJSONPathSet() + path ] )
+            }
             
         }
     }

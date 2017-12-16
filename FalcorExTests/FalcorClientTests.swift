@@ -516,6 +516,52 @@ class FalcorClientTests: XCTestCase {
 
     }
     
+    // Test case, empty path to atom json, return atom
+    func testEmptyPathToJsonAtom() {
+        let jsonPath = [[JSONPathKey]]()
+        let modelJsonGraph = JSONGraph.Sentinal(.Atom(
+            JSON.Value(.Number(5))
+            ))
+        
+        let resultJSON: JSON?
+        do {
+            resultJSON = try falcorClient.getJSON( jsonGraph: modelJsonGraph,  path: jsonPath )
+        } catch {
+            resultJSON = nil
+        }
+        
+        XCTAssertNotNil(resultJSON)
+        let resultString = String(describing: resultJSON!)
+        
+        let correctJSON = JSON.Value(.Number(5))
+        let correctString = String(describing: correctJSON)
+        
+        XCTAssertEqual(resultString, correctString)
+    }
+    
+    // Test case, empty path to ref json, return ??
+    func testEmptyPathToJsonRef() {
+        let jsonPath = [[JSONPathKey]]()
+        let modelJsonGraph = JSONGraph.Sentinal(.Ref(
+            ["videosById", "22"]
+            ))
+        
+        let resultJSON: JSON?
+        do {
+            resultJSON = try falcorClient.getJSON( jsonGraph: modelJsonGraph,  path: jsonPath )
+        } catch {
+            resultJSON = nil
+        }
+        
+        XCTAssertNotNil(resultJSON)
+        let resultString = String(describing: resultJSON!)
+        
+        let correctJSON = JSON.Object([:])
+        let correctString = String(describing: correctJSON)
+        
+        XCTAssertEqual(resultString, correctString)
+    }
+    
     // MARK: - Extra Tests for resolving paths
     
     func testList3Name() {
@@ -583,7 +629,7 @@ class FalcorClientTests: XCTestCase {
     func testResolveRefPathEpisodesById23Name() {
         let jsonRefPath = [ "episodesById", "23", "name"]
         
-        let resultJSON: JSONGraph? = falcorClient.resolveJsonPathReferenceRecursive(jsonGraph: jsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: jsonGraph)
+        let resultJSON: JSONGraph? = falcorClient.resolveJsonPathReference(jsonGraph: jsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: jsonGraph)
         
         XCTAssertNil(resultJSON)
 //        let resultString = (resultJSON != nil ) ? String(describing: resultJSON!) : ""
@@ -599,7 +645,7 @@ class FalcorClientTests: XCTestCase {
     func testResolveRefPathEpisodesById() {
         let jsonRefPath = [ "episodesById"]
         
-        let resultJSON: JSONGraph? = falcorClient.resolveJsonPathReferenceRecursive(jsonGraph: jsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: jsonGraph)
+        let resultJSON: JSONGraph? = falcorClient.resolveJsonPathReference(jsonGraph: jsonGraph, refPath: ArraySlice(jsonRefPath), rootJsonGraph: jsonGraph)
         
         XCTAssertNotNil(resultJSON)
         let resultString = (resultJSON != nil ) ? String(describing: resultJSON!) : ""

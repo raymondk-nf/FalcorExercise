@@ -1,0 +1,17 @@
+
+
+
+12/13/2017
+// Test case, empty path to atom json, return atom
+
+// Test case, empty path to ref json, return ??
+
+// TODO: Remove "Recursive" in method signatures
+
+// TODO: Move to nested function style, when it makes sense
+
+// TODO: possibly reduce switch checks with .Object above
+// TODO: can be removed from map iteration
+
+// TODO: Carry over optimizations to getJSONGraph - Tuple return value and simplying reduce
+
