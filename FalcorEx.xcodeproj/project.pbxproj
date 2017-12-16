@@ -1,0 +1,495 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D1FBFDF1FE07B8400B5A12D /* FalcorSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBFDE1FE07B8400B5A12D /* FalcorSearch.swift */; };
+		1D1FBFE11FE07C2E00B5A12D /* FalcorSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */; };
+		1D4DC6B51FCF600000B517BA /* DictionaryEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D4DC6B41FCF600000B517BA /* DictionaryEx.swift */; };
+		1D9058A81FD093DE00ACD225 /* FalcorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A71FD093DE00ACD225 /* FalcorClient.swift */; };
+		1D9058AA1FD0A35700ACD225 /* FalcorClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */; };
+		1D9058AC1FD0A54200ACD225 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058AB1FD0A54200ACD225 /* Error.swift */; };
+		1DC4F31A1FC4988400AFF654 /* FalcorEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC4F3101FC4988400AFF654 /* FalcorEx.framework */; };
+		1DC4F31F1FC4988400AFF654 /* FalcorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F31E1FC4988400AFF654 /* FalcorServiceTests.swift */; };
+		1DC4F3211FC4988400AFF654 /* FalcorEx.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC4F3131FC4988400AFF654 /* FalcorEx.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1DC4F32B1FC498B800AFF654 /* FalcorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F32A1FC498B800AFF654 /* FalcorService.swift */; };
+		1DC4F32F1FC4B6C200AFF654 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F32E1FC4B6C200AFF654 /* Model.swift */; };
+		1DC4F3311FC4DCBC00AFF654 /* Syntax.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F3301FC4DCBC00AFF654 /* Syntax.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1DC4F31B1FC4988400AFF654 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1DC4F3071FC4988400AFF654 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1DC4F30F1FC4988400AFF654;
+			remoteInfo = FalcorEx;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D1FBFDE1FE07B8400B5A12D /* FalcorSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorSearch.swift; sourceTree = "<group>"; };
+		1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorSearchTests.swift; sourceTree = "<group>"; };
+		1D4DC6B41FCF600000B517BA /* DictionaryEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryEx.swift; sourceTree = "<group>"; };
+		1D9058A71FD093DE00ACD225 /* FalcorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClient.swift; sourceTree = "<group>"; };
+		1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClientTests.swift; sourceTree = "<group>"; };
+		1D9058AB1FD0A54200ACD225 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		1DC4F3101FC4988400AFF654 /* FalcorEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FalcorEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC4F3131FC4988400AFF654 /* FalcorEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorEx.h; sourceTree = "<group>"; };
+		1DC4F3141FC4988400AFF654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC4F3191FC4988400AFF654 /* FalcorExTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FalcorExTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DC4F31E1FC4988400AFF654 /* FalcorServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorServiceTests.swift; sourceTree = "<group>"; };
+		1DC4F3201FC4988400AFF654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DC4F32A1FC498B800AFF654 /* FalcorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorService.swift; sourceTree = "<group>"; };
+		1DC4F32E1FC4B6C200AFF654 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		1DC4F3301FC4DCBC00AFF654 /* Syntax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Syntax.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DC4F30C1FC4988400AFF654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC4F3161FC4988400AFF654 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC4F31A1FC4988400AFF654 /* FalcorEx.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D9058A51FD092B600ACD225 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DC4F32E1FC4B6C200AFF654 /* Model.swift */,
+				1DC4F3301FC4DCBC00AFF654 /* Syntax.swift */,
+				1D9058AB1FD0A54200ACD225 /* Error.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1D9058A61FD092CC00ACD225 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1D4DC6B41FCF600000B517BA /* DictionaryEx.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1DC4F3061FC4988400AFF654 = {
+			isa = PBXGroup;
+			children = (
+				1DC4F3121FC4988400AFF654 /* FalcorEx */,
+				1DC4F31D1FC4988400AFF654 /* FalcorExTests */,
+				1DC4F3111FC4988400AFF654 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1DC4F3111FC4988400AFF654 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DC4F3101FC4988400AFF654 /* FalcorEx.framework */,
+				1DC4F3191FC4988400AFF654 /* FalcorExTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DC4F3121FC4988400AFF654 /* FalcorEx */ = {
+			isa = PBXGroup;
+			children = (
+				1DC4F32A1FC498B800AFF654 /* FalcorService.swift */,
+				1D9058A71FD093DE00ACD225 /* FalcorClient.swift */,
+				1D1FBFDE1FE07B8400B5A12D /* FalcorSearch.swift */,
+				1D9058A51FD092B600ACD225 /* Model */,
+				1D9058A61FD092CC00ACD225 /* Extensions */,
+				1DC4F3131FC4988400AFF654 /* FalcorEx.h */,
+				1DC4F3141FC4988400AFF654 /* Info.plist */,
+			);
+			path = FalcorEx;
+			sourceTree = "<group>";
+		};
+		1DC4F31D1FC4988400AFF654 /* FalcorExTests */ = {
+			isa = PBXGroup;
+			children = (
+				1DC4F31E1FC4988400AFF654 /* FalcorServiceTests.swift */,
+				1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */,
+				1D1FBFE01FE07C2E00B5A12D /* FalcorSearchTests.swift */,
+				1DC4F3201FC4988400AFF654 /* Info.plist */,
+			);
+			path = FalcorExTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1DC4F30D1FC4988400AFF654 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC4F3211FC4988400AFF654 /* FalcorEx.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		1DC4F30F1FC4988400AFF654 /* FalcorEx */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC4F3241FC4988400AFF654 /* Build configuration list for PBXNativeTarget "FalcorEx" */;
+			buildPhases = (
+				1DC4F30B1FC4988400AFF654 /* Sources */,
+				1DC4F30C1FC4988400AFF654 /* Frameworks */,
+				1DC4F30D1FC4988400AFF654 /* Headers */,
+				1DC4F30E1FC4988400AFF654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FalcorEx;
+			productName = FalcorEx;
+			productReference = 1DC4F3101FC4988400AFF654 /* FalcorEx.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1DC4F3181FC4988400AFF654 /* FalcorExTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DC4F3271FC4988400AFF654 /* Build configuration list for PBXNativeTarget "FalcorExTests" */;
+			buildPhases = (
+				1DC4F3151FC4988400AFF654 /* Sources */,
+				1DC4F3161FC4988400AFF654 /* Frameworks */,
+				1DC4F3171FC4988400AFF654 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1DC4F31C1FC4988400AFF654 /* PBXTargetDependency */,
+			);
+			name = FalcorExTests;
+			productName = FalcorExTests;
+			productReference = 1DC4F3191FC4988400AFF654 /* FalcorExTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DC4F3071FC4988400AFF654 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0910;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = Netflix;
+				TargetAttributes = {
+					1DC4F30F1FC4988400AFF654 = {
+						CreatedOnToolsVersion = 9.1;
+						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
+					};
+					1DC4F3181FC4988400AFF654 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1DC4F30A1FC4988400AFF654 /* Build configuration list for PBXProject "FalcorEx" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1DC4F3061FC4988400AFF654;
+			productRefGroup = 1DC4F3111FC4988400AFF654 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DC4F30F1FC4988400AFF654 /* FalcorEx */,
+				1DC4F3181FC4988400AFF654 /* FalcorExTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DC4F30E1FC4988400AFF654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC4F3171FC4988400AFF654 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DC4F30B1FC4988400AFF654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC4F32B1FC498B800AFF654 /* FalcorService.swift in Sources */,
+				1D9058A81FD093DE00ACD225 /* FalcorClient.swift in Sources */,
+				1D1FBFDF1FE07B8400B5A12D /* FalcorSearch.swift in Sources */,
+				1DC4F32F1FC4B6C200AFF654 /* Model.swift in Sources */,
+				1DC4F3311FC4DCBC00AFF654 /* Syntax.swift in Sources */,
+				1D9058AC1FD0A54200ACD225 /* Error.swift in Sources */,
+				1D4DC6B51FCF600000B517BA /* DictionaryEx.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1DC4F3151FC4988400AFF654 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1DC4F31F1FC4988400AFF654 /* FalcorServiceTests.swift in Sources */,
+				1D1FBFE11FE07C2E00B5A12D /* FalcorSearchTests.swift in Sources */,
+				1D9058AA1FD0A35700ACD225 /* FalcorClientTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1DC4F31C1FC4988400AFF654 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1DC4F30F1FC4988400AFF654 /* FalcorEx */;
+			targetProxy = 1DC4F31B1FC4988400AFF654 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DC4F3221FC4988400AFF654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		1DC4F3231FC4988400AFF654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1DC4F3251FC4988400AFF654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YXNLG53YV4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FalcorEx/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorEx;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1DC4F3261FC4988400AFF654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YXNLG53YV4;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = FalcorEx/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorEx;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		1DC4F3281FC4988400AFF654 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YXNLG53YV4;
+				INFOPLIST_FILE = FalcorExTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorExTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1DC4F3291FC4988400AFF654 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YXNLG53YV4;
+				INFOPLIST_FILE = FalcorExTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorExTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DC4F30A1FC4988400AFF654 /* Build configuration list for PBXProject "FalcorEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC4F3221FC4988400AFF654 /* Debug */,
+				1DC4F3231FC4988400AFF654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC4F3241FC4988400AFF654 /* Build configuration list for PBXNativeTarget "FalcorEx" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC4F3251FC4988400AFF654 /* Debug */,
+				1DC4F3261FC4988400AFF654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DC4F3271FC4988400AFF654 /* Build configuration list for PBXNativeTarget "FalcorExTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DC4F3281FC4988400AFF654 /* Debug */,
+				1DC4F3291FC4988400AFF654 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DC4F3071FC4988400AFF654 /* Project object */;
+}
