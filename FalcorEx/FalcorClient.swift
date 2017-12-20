@@ -19,7 +19,7 @@ open class FalcorClient {
             case .Object(let dictionary):
                 guard path.count > 0 else { throw FalcorError.InvalidAttempt }
                 
-                let pathKeySet = path.first!.toStringArray
+                let pathKeySet = path.first!.toStringSequence
                 let subPathSlice = path.dropFirst()
                 
                 let jsonTuples = try pathKeySet.map{ (stringKey) -> (String, JSON)? in

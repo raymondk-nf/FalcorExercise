@@ -58,7 +58,7 @@
         case .Object(let dictionary):
             guard !path.isEmpty else { throw FalcorError.InvalidAttempt }
 
-            let pathKeySet = path.first!.toStringArray
+            let pathKeySet = path.first!.toStringSequence
             let subPathSlice = path.dropFirst()
             
             let jsonGraphDictionaryOptionalTupleArray = try pathKeySet.map{ (stringKey) -> JsonGraphDictionaryOptionalTuple in

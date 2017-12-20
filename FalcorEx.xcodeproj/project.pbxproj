@@ -21,6 +21,7 @@
 		1D9058A81FD093DE00ACD225 /* FalcorClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A71FD093DE00ACD225 /* FalcorClient.swift */; };
 		1D9058AA1FD0A35700ACD225 /* FalcorClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */; };
 		1D9058AC1FD0A54200ACD225 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9058AB1FD0A54200ACD225 /* Error.swift */; };
+		1D9D35A81FE9D5E0005DF3DA /* Playgrounds in Resources */ = {isa = PBXBuildFile; fileRef = 1D9D35A71FE9D5E0005DF3DA /* Playgrounds */; };
 		1DC4F31A1FC4988400AFF654 /* FalcorEx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC4F3101FC4988400AFF654 /* FalcorEx.framework */; };
 		1DC4F31F1FC4988400AFF654 /* FalcorServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4F31E1FC4988400AFF654 /* FalcorServiceTests.swift */; };
 		1DC4F3211FC4988400AFF654 /* FalcorEx.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC4F3131FC4988400AFF654 /* FalcorEx.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,6 +53,7 @@
 		1D9058A71FD093DE00ACD225 /* FalcorClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClient.swift; sourceTree = "<group>"; };
 		1D9058A91FD0A35700ACD225 /* FalcorClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FalcorClientTests.swift; sourceTree = "<group>"; };
 		1D9058AB1FD0A54200ACD225 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		1D9D35A71FE9D5E0005DF3DA /* Playgrounds */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Playgrounds; sourceTree = "<group>"; };
 		1DC4F3101FC4988400AFF654 /* FalcorEx.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FalcorEx.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DC4F3131FC4988400AFF654 /* FalcorEx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorEx.h; sourceTree = "<group>"; };
 		1DC4F3141FC4988400AFF654 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				1DC4F3121FC4988400AFF654 /* FalcorEx */,
 				1DC4F31D1FC4988400AFF654 /* FalcorExTests */,
 				1DC4F3111FC4988400AFF654 /* Products */,
+				1D9D35A71FE9D5E0005DF3DA /* Playgrounds */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,6 +257,7 @@
 				1D687D231FE4813A00E83CED /* dictionary-algs4.txt in Resources */,
 				1D1FBFE31FE1D26300B5A12D /* notes in Resources */,
 				1D687D221FE4813A00E83CED /* dictionary-yawl.txt in Resources */,
+				1D9D35A81FE9D5E0005DF3DA /* Playgrounds in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,5 +1,11 @@
 
 
+12/19/2017
+// TODO: Change from [String] to Sequence<String>
+
+// TODO: Make sure to take a look at any place in your program where you have intermediary Array allocations. Why allocate and copy Arrays if you never even see them? Sequences are an important tool to make functional programming more efficiemt.
+
+
 
 12/13/2017
 // Test case, empty path to atom json, return atom
