@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import FalcorEx
+@testable import FalcorSwift
 
 class FalcorArrayTests: XCTestCase {
     
