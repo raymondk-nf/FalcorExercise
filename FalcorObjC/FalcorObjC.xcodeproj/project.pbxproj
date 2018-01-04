@@ -7,8 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D4322B61FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4322B41FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.h */; };
+		1D4322B71FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4322B51FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.m */; };
+		1D4322CA1FFD69B70039FDCD /* NSObject+Syntax.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D4322C81FFD69B70039FDCD /* NSObject+Syntax.h */; };
+		1D4322CB1FFD69B70039FDCD /* NSObject+Syntax.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D4322C91FFD69B70039FDCD /* NSObject+Syntax.m */; };
+		1D682A201FEC2E3500120562 /* FalcorObjCService.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D682A1E1FEC2E3500120562 /* FalcorObjCService.h */; };
+		1D682A211FEC2E3500120562 /* FalcorObjCService.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D682A1F1FEC2E3500120562 /* FalcorObjCService.m */; };
+		1D682A241FEC2E4200120562 /* FalcorObjCClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 1D682A221FEC2E4200120562 /* FalcorObjCClient.h */; };
+		1D682A251FEC2E4200120562 /* FalcorObjCClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D682A231FEC2E4200120562 /* FalcorObjCClient.m */; };
+		1D682A271FEC2E5500120562 /* FalcorObjCServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D682A261FEC2E5500120562 /* FalcorObjCServiceTests.m */; };
+		1DC4398B1FEC406700F105D4 /* FalcorObjCModel.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DC439891FEC406700F105D4 /* FalcorObjCModel.h */; };
+		1DC4398C1FEC406700F105D4 /* FalcorObjCModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DC4398A1FEC406700F105D4 /* FalcorObjCModel.m */; };
 		1DFDDBEE1FEC276900D8A634 /* FalcorObjC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DFDDBE41FEC276900D8A634 /* FalcorObjC.framework */; };
-		1DFDDBF31FEC276900D8A634 /* FalcorObjCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DFDDBF21FEC276900D8A634 /* FalcorObjCTests.m */; };
 		1DFDDBF51FEC276900D8A634 /* FalcorObjC.h in Headers */ = {isa = PBXBuildFile; fileRef = 1DFDDBE71FEC276900D8A634 /* FalcorObjC.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -23,11 +33,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D4322B41FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+jsonGraphMerge.h"; sourceTree = "<group>"; };
+		1D4322B51FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+jsonGraphMerge.m"; sourceTree = "<group>"; };
+		1D4322C81FFD69B70039FDCD /* NSObject+Syntax.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Syntax.h"; sourceTree = "<group>"; };
+		1D4322C91FFD69B70039FDCD /* NSObject+Syntax.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Syntax.m"; sourceTree = "<group>"; };
+		1D682A1E1FEC2E3500120562 /* FalcorObjCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorObjCService.h; sourceTree = "<group>"; };
+		1D682A1F1FEC2E3500120562 /* FalcorObjCService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FalcorObjCService.m; sourceTree = "<group>"; };
+		1D682A221FEC2E4200120562 /* FalcorObjCClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorObjCClient.h; sourceTree = "<group>"; };
+		1D682A231FEC2E4200120562 /* FalcorObjCClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FalcorObjCClient.m; sourceTree = "<group>"; };
+		1D682A261FEC2E5500120562 /* FalcorObjCServiceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FalcorObjCServiceTests.m; sourceTree = "<group>"; };
+		1DC439891FEC406700F105D4 /* FalcorObjCModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorObjCModel.h; sourceTree = "<group>"; };
+		1DC4398A1FEC406700F105D4 /* FalcorObjCModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FalcorObjCModel.m; sourceTree = "<group>"; };
 		1DFDDBE41FEC276900D8A634 /* FalcorObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FalcorObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DFDDBE71FEC276900D8A634 /* FalcorObjC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FalcorObjC.h; sourceTree = "<group>"; };
 		1DFDDBE81FEC276900D8A634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1DFDDBED1FEC276900D8A634 /* FalcorObjCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FalcorObjCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DFDDBF21FEC276900D8A634 /* FalcorObjCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FalcorObjCTests.m; sourceTree = "<group>"; };
 		1DFDDBF41FEC276900D8A634 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -50,6 +70,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1D4322B31FFD5FD10039FDCD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1D4322B41FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.h */,
+				1D4322B51FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.m */,
+				1D4322C81FFD69B70039FDCD /* NSObject+Syntax.h */,
+				1D4322C91FFD69B70039FDCD /* NSObject+Syntax.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1DC439881FEC405500F105D4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1DC439891FEC406700F105D4 /* FalcorObjCModel.h */,
+				1DC4398A1FEC406700F105D4 /* FalcorObjCModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1DFDDBDA1FEC276900D8A634 = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +111,12 @@
 		1DFDDBE61FEC276900D8A634 /* FalcorObjC */ = {
 			isa = PBXGroup;
 			children = (
+				1D4322B31FFD5FD10039FDCD /* Extensions */,
+				1DC439881FEC405500F105D4 /* Model */,
+				1D682A1E1FEC2E3500120562 /* FalcorObjCService.h */,
+				1D682A1F1FEC2E3500120562 /* FalcorObjCService.m */,
+				1D682A221FEC2E4200120562 /* FalcorObjCClient.h */,
+				1D682A231FEC2E4200120562 /* FalcorObjCClient.m */,
 				1DFDDBE71FEC276900D8A634 /* FalcorObjC.h */,
 				1DFDDBE81FEC276900D8A634 /* Info.plist */,
 			);
@@ -80,7 +126,7 @@
 		1DFDDBF11FEC276900D8A634 /* FalcorObjCTests */ = {
 			isa = PBXGroup;
 			children = (
-				1DFDDBF21FEC276900D8A634 /* FalcorObjCTests.m */,
+				1D682A261FEC2E5500120562 /* FalcorObjCServiceTests.m */,
 				1DFDDBF41FEC276900D8A634 /* Info.plist */,
 			);
 			path = FalcorObjCTests;
@@ -94,6 +140,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1DFDDBF51FEC276900D8A634 /* FalcorObjC.h in Headers */,
+				1DC4398B1FEC406700F105D4 /* FalcorObjCModel.h in Headers */,
+				1D682A241FEC2E4200120562 /* FalcorObjCClient.h in Headers */,
+				1D4322CA1FFD69B70039FDCD /* NSObject+Syntax.h in Headers */,
+				1D4322B61FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.h in Headers */,
+				1D682A201FEC2E3500120562 /* FalcorObjCService.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +198,7 @@
 				TargetAttributes = {
 					1DFDDBE31FEC276900D8A634 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					1DFDDBEC1FEC276900D8A634 = {
@@ -195,6 +247,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D4322CB1FFD69B70039FDCD /* NSObject+Syntax.m in Sources */,
+				1D682A211FEC2E3500120562 /* FalcorObjCService.m in Sources */,
+				1D682A251FEC2E4200120562 /* FalcorObjCClient.m in Sources */,
+				1D4322B71FFD5FFD0039FDCD /* NSMutableDictionary+jsonGraphMerge.m in Sources */,
+				1DC4398C1FEC406700F105D4 /* FalcorObjCModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1DFDDBF31FEC276900D8A634 /* FalcorObjCTests.m in Sources */,
+				1D682A271FEC2E5500120562 /* FalcorObjCServiceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +387,7 @@
 		1DFDDBF91FEC276900D8A634 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -343,6 +401,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorObjC;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -350,6 +410,7 @@
 		1DFDDBFA1FEC276900D8A634 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -363,6 +424,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.netflix.FalcorObjC;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
