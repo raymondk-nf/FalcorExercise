@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+Syntax.h"
 
 @interface FalcorObjCClient : NSObject
+
+- (nullable NSDictionary *)getJSON:(nonnull NSDictionary *)jsonGraph pathSet:(nonnull JSONPathSet)pathSet;
+
 
 @end

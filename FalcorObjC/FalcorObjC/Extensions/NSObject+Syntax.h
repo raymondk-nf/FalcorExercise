@@ -21,6 +21,8 @@ typedef enum : NSUInteger {
     JSONGraphSentinal,
 } JSONGraphType;
 
+typedef NSArray<NSString *> *JSONPathKeySet;
+typedef NSArray<JSONPathKeySet> *JSONPathSet;
 
 @interface NSObject (Syntax)
 
@@ -29,6 +31,8 @@ typedef enum : NSUInteger {
 @property (readonly, nonatomic, assign) JSONGraphSentinalType jsonGraphSentinalType;
 
 @property (readonly, nonatomic, nonnull) NSArray *jsonGraphSentinalRefValue;
+@property (readonly, nonatomic, nonnull) NSDictionary *jsonGraphSentinalAtomValue;
+@property (readonly, nonatomic, nonnull) NSString *jsonGraphSentinalErrorValue;
 
 @end
 

@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSObject+Syntax.h"
 
 @interface FalcorObjCService : NSObject
 
-- (nullable NSDictionary *)getJSONGraph:(nonnull NSDictionary *)jsonGraph path:(nonnull NSArray<NSArray<NSString *> *>*)jsonPath;
+- (nullable NSDictionary *)getJSONGraph:(nonnull NSDictionary *)jsonGraph path:(nonnull JSONPathSet)jsonPath;
+
 
 @end

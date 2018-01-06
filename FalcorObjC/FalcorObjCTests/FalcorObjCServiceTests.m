@@ -34,283 +34,309 @@
 }
 
 - (void)testListZero {
-    NSArray *jsonPath = @[@[@"list"], @[@0]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] }
-                                            }};
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@0]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] }
+                                                }};
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListZeroAndOne {
-    NSArray *jsonPath = @[@[@"list"], @[@0, @1]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
-                                            @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
-                                            }};
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@0, @1]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
+                                                @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
+                                                }};
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListZeroName {
-    NSArray *jsonPath = @[@[@"list"], @[@0], @[@"name"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
-                                            },
-                                    @"videosById": @{
-                                            @22: @{
-                                                    @"name": @"Die Hard"
-                                                    }
-                                            }
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@0], @[@"name"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
+                                                },
+                                        @"videosById": @{
+                                                @22: @{
+                                                        @"name": @"Die Hard"
+                                                        }
+                                                }
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListZeroAndOneName {
-    NSArray *jsonPath = @[@[@"list"], @[@0, @1], @[@"name"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
-                                            @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
-                                            },
-                                    @"videosById": @{
-                                            @22: @{
-                                                    @"name": @"Die Hard"
-                                                    },
-                                            @44: @{
-                                                    @"name": @"Get Out",
-                                                    },
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@0, @1], @[@"name"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
+                                                @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
+                                                },
+                                        @"videosById": @{
+                                                @22: @{
+                                                        @"name": @"Die Hard"
+                                                        },
+                                                @44: @{
+                                                        @"name": @"Get Out",
+                                                        },
 
-                                            }
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+                                                }
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListTwoZeroName {
-    NSArray *jsonPath = @[@[@"list"], @[@2], @[@0], @[@"name"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @2: @{
-                                                    @0: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] }
-                                                    },
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@2], @[@0], @[@"name"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @2: @{
+                                                        @0: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] }
+                                                        },
 
-                                            },
-                                    @"videosById": @{
-                                            @44: @{
-                                                    @"name": @"Get Out",
-                                                    },
-                                            
-                                            }
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+                                                },
+                                        @"videosById": @{
+                                                @44: @{
+                                                        @"name": @"Get Out",
+                                                        },
+                                                
+                                                }
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListTwoOne {
-    NSArray *jsonPath = @[@[@"list"], @[@2], @[@1]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @2: @{},
-                                            },
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@2], @[@1]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @2: @{},
+                                                },
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testListZeroAndOneNameAndRating {
-    NSArray *jsonPath = @[@[@"list"], @[@0, @1], @[@"name", @"rating"]];
     
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
-                                            @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
-                                            },
-                                    @"videosById": @{
-                                            @22: @{
-                                                    @"name": @"Die Hard",
-                                                    @"rating": @5,
-                                                    },
-                                            @44: @{
-                                                    @"name": @"Get Out",
-                                                    @"rating": @5,
-                                                    },
-                                            
-                                            }
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@0, @1], @[@"name", @"rating"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @0: @{ @"$type": @"ref", @"value": @[@"videosById", @22 ] },
+                                                @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
+                                                },
+                                        @"videosById": @{
+                                                @22: @{
+                                                        @"name": @"Die Hard",
+                                                        @"rating": @5,
+                                                        },
+                                                @44: @{
+                                                        @"name": @"Get Out",
+                                                        @"rating": @5,
+                                                        },
+                                                
+                                                }
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
+
 }
 
 - (void)testListLength {
-    NSArray *jsonPath = @[@[@"list"], @[@"length"], @[@"name"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{ @"list": @{
-                                            @"length": @6
-                                            }
-                                    };
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@"length"], @[@"name"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{ @"list": @{
+                                                @"length": @6
+                                                }
+                                        };
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testVideoBookmarks {
-    NSArray *jsonPath = @[@[@"videosById"], @[@22, @44], @[@"bookmark"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{    @"videosById": @{
-                                               @22: @{
-                                                       @"bookmark": @{ @"$type": @"atom", @"value": @73973 }
-                                                       },
-                                               @44: @{
-                                                       @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
-                                                       },
-                                               }
-                                    };
-    
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"videosById"], @[@22, @44], @[@"bookmark"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{    @"videosById": @{
+                                                   @22: @{
+                                                           @"bookmark": @{ @"$type": @"atom", @"value": @73973 }
+                                                           },
+                                                   @44: @{
+                                                           @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
+                                                           },
+                                                   }
+                                        };
+        
 
 
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testVideoBookmarkValues {
-    NSArray *jsonPath = @[@[@"videosById"], @[@22, @44], @[@"bookmark"], @[@"value"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    
-    NSDictionary *correctGraph = @{    @"videosById": @{
-                                               @22: @{
-                                                       @"bookmark": @{ @"$type": @"atom", @"value": @73973 }
-                                                       },
-                                               @44: @{
-                                                       @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
-                                                       },
-                                               }
-                                       };
-    
-    
-    
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"videosById"], @[@22, @44], @[@"bookmark"], @[@"value"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        
+        NSDictionary *correctGraph = @{    @"videosById": @{
+                                                   @22: @{
+                                                           @"bookmark": @{ @"$type": @"atom", @"value": @73973 }
+                                                           },
+                                                   @44: @{
+                                                           @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
+                                                           },
+                                                   }
+                                           };
+        
+        
+        
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testVideoReferenceBookmark {
-    NSArray *jsonPath = @[@[@"list"], @[@-1], @[@"bookmark"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-    }
-    
-    XCTAssertNotNil(resultGraph);
-    NSDictionary *correctGraph = @{@"list" : @{
-                                           @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
-                                           @-1: @{ @"$type": @"ref", @"value": @[@"list", @1 ] },
-                                           },
-                                   @"videosById": @{
-                                               @44: @{
-                                                       @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
-                                                       },
-                                               }
-                                       };
-    
-    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"], @[@-1], @[@"bookmark"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+        }
+        
+        XCTAssertNotNil(resultGraph);
+        NSDictionary *correctGraph = @{@"list" : @{
+                                               @1: @{ @"$type": @"ref", @"value": @[@"videosById", @44 ] },
+                                               @-1: @{ @"$type": @"ref", @"value": @[@"list", @1 ] },
+                                               },
+                                       @"videosById": @{
+                                                   @44: @{
+                                                           @"bookmark": @{ @"$type": @"error", @"value": @"Couldn’t retrieve bookmark" }
+                                                           },
+                                                   }
+                                           };
+        
+        XCTAssertTrue([correctGraph isEqual:resultGraph]);
+    }];
 }
 
 - (void)testInvalidAttempList {
-    NSArray *jsonPath = @[@[@"list"]];
-    
-    NSDictionary *resultGraph;
-    @try {
-        resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
-    } @catch (NSException *exception) {
-        resultGraph = nil;
-        NSLog(@"Invalid attempt to retrieve non-primitive value");
-    }
-    
-    XCTAssertNil(resultGraph);
+    [self measureBlock:^{
+        NSArray *jsonPath = @[@[@"list"]];
+        
+        NSDictionary *resultGraph;
+        @try {
+            resultGraph = [self.falcorService getJSONGraph:self.jsonGraph path:jsonPath];
+        } @catch (NSException *exception) {
+            resultGraph = nil;
+            NSLog(@"Invalid attempt to retrieve non-primitive value");
+        }
+        
+        XCTAssertNil(resultGraph);
+    }];
 }
 
 

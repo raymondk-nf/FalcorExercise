@@ -73,5 +73,37 @@ NSString * const syntaxAtom = @"atom";
     return @[];
 }
 
+- (NSDictionary *)jsonGraphSentinalAtomValue {
+    if ([self isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *jsonGraph = (NSDictionary *) self;
+        if (jsonGraph[syntaxType] != nil) {
+            
+            if ([jsonGraph[syntaxType] caseInsensitiveCompare:syntaxAtom] == NSOrderedSame) {
+                return  jsonGraph[syntaxValue];
+            }
+            
+        }
+    }
+    
+    return @{};
+}
+
+- (NSString *)jsonGraphSentinalErrorValue {
+    if ([self isKindOfClass:[NSDictionary class]])
+    {
+        NSDictionary *jsonGraph = (NSDictionary *) self;
+        if (jsonGraph[syntaxType] != nil) {
+            
+            if ([jsonGraph[syntaxType] caseInsensitiveCompare:syntaxError] == NSOrderedSame) {
+                return  jsonGraph[syntaxValue];
+            }
+            
+        }
+    }
+    
+    return nil;
+}
+
 @end
 
