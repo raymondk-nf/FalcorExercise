@@ -9,60 +9,29 @@
 #import "FalcorObjCService.h"
 #import "NSMutableDictionary+jsonGraphMerge.h"
 
-
-typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *optimizedPaths);
-
-
-@interface JsonGraphOptimizedPathsTuple :NSObject
-@property (nonatomic, nullable) NSDictionary *jsonGraph;
-@end
-@implementation JsonGraphOptimizedPathsTuple
-
-- (instancetype)initWithJsonGraph:(NSDictionary *)jsonGraph
-{
-    self = [super init];
-    if (self) {
-        self.jsonGraph = jsonGraph;
-    }
-    return self;
-}
-
--(NSString *)debugDescription {
-    return [NSString stringWithFormat:@"%@, jsonGraph: %@", self, self.jsonGraph];
-}
-@end
-
-@interface FalcorObjCService ()
-
-@end
-
-
 @implementation FalcorObjCService
 
 - (nullable NSDictionary *)getJSONGraph:(nonnull NSDictionary *)jsonGraph path:(nonnull JSONPathSet)jsonPath; {
     
     NSMutableArray *optimizedPaths = [NSMutableArray array];
-    NSMutableDictionary *buildJsonGraph = [NSMutableDictionary dictionary];
+    NSMutableDictionary *resultJsonGraph = [NSMutableDictionary dictionary];
     
     [optimizedPaths addObject:jsonPath];
     
     while (optimizedPaths.count > 0) {
         
-        // Grab first pathSet
         NSArray *pathSet = [optimizedPaths firstObject];
         [optimizedPaths removeObjectAtIndex:0];
         
-        JsonGraphOptimizedPathsTuple *tupleResult = [self getJSONGraph:jsonGraph pathSet:pathSet optimizedPaths:&optimizedPaths];
-        [buildJsonGraph deepMergeJSONGraph:tupleResult.jsonGraph];
-        
+        [self getJSONGraph:jsonGraph pathSet:pathSet buildJsonGraph:&resultJsonGraph optimizedPaths:&optimizedPaths];
     }
     
-    return buildJsonGraph;
+    return resultJsonGraph;
 }
 
 
 //TODO: - Pass a dictionary by reference and build
-- (JsonGraphOptimizedPathsTuple *)getJSONGraph:(nullable NSDictionary*)jsonGraph pathSet:(JSONPathKeySet)pathSet optimizedPaths:(NSMutableArray **)optimizedPaths {
+- (void)getJSONGraph:(nullable NSDictionary*)jsonGraph pathSet:(JSONPathKeySet)pathSet buildJsonGraph:(NSMutableDictionary **)buildJsonGraph optimizedPaths:(NSMutableArray **)optimizedPaths {
     
     switch (jsonGraph.jsonGraphType) {
         case JSONGraphObject: {
@@ -75,39 +44,30 @@ typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *op
             if (pathSubSlice.count > 0)
                 [pathSubSlice removeObjectAtIndex:0];
             
-            NSMutableArray<JsonGraphOptimizedPathsTuple *> *tupleArray = [NSMutableArray array];
             for (NSString *pathKey in pathKeySet) {
                 
                 NSDictionary *subGraph = jsonGraph[pathKey];
                 if (subGraph == nil) {
-                    JsonGraphOptimizedPathsTuple *tuple = [[JsonGraphOptimizedPathsTuple alloc] initWithJsonGraph:@{}];
-                    [tupleArray addObject:tuple];
+                    [*buildJsonGraph addEntriesFromDictionary:@{}];
                 } else {
                     
-                    JsonGraphOptimizedPathsTuple *tuple;
                     if (subGraph.jsonGraphType == JSONGraphSentinal
                         && subGraph.jsonGraphSentinalType == JSONGraphSentinalPrimitive) {
                         
-                        tuple = [[JsonGraphOptimizedPathsTuple alloc] initWithJsonGraph:@{ pathKey : subGraph }];
+                        [*buildJsonGraph addEntriesFromDictionary: @{ pathKey : subGraph } ];
                     } else {
                     
-                        tuple = [self getJSONGraph:subGraph pathSet:pathSubSlice optimizedPaths:optimizedPaths];
-                        tuple.jsonGraph = @{pathKey : tuple.jsonGraph };
+                        // This replaces the deep merging call
+                        NSMutableDictionary *anotherDictionary = ((*buildJsonGraph)[pathKey]);
+                        if (anotherDictionary == nil) {
+                            anotherDictionary = [NSMutableDictionary dictionary];
+                            (*buildJsonGraph)[pathKey] = anotherDictionary;
+                        }
+                        
+                        [self getJSONGraph:subGraph pathSet:pathSubSlice buildJsonGraph:&anotherDictionary optimizedPaths:optimizedPaths];
                     }
-                    [tupleArray addObject:tuple];
                 }
             }
-            
-            NSMutableDictionary *buildJsonGraph = [NSMutableDictionary dictionary];
-            
-            for (JsonGraphOptimizedPathsTuple *tuple in tupleArray) {
-                [buildJsonGraph addEntriesFromDictionary:tuple.jsonGraph];
-                
-            }
-            
-            JsonGraphOptimizedPathsTuple *returnTuple = [[JsonGraphOptimizedPathsTuple alloc] initWithJsonGraph:buildJsonGraph];
-            return returnTuple;
-            
         }
             break;
             
@@ -116,26 +76,21 @@ typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *op
                 case JSONGraphSentinalPrimitive:
                 case JSONGraphSentinalAtom:
                 case JSONGraphSentinalError: {
-                    JsonGraphOptimizedPathsTuple *tuple = [[JsonGraphOptimizedPathsTuple alloc] initWithJsonGraph:jsonGraph];
-                    return tuple;
+                    [*buildJsonGraph addEntriesFromDictionary:jsonGraph];
                 }
                     break;
 
                 case JSONGraphSentinalRef: {
-                    JsonGraphOptimizedPathsTuple *tuple = [JsonGraphOptimizedPathsTuple new];
-                    tuple.jsonGraph = jsonGraph;
+                    [*buildJsonGraph addEntriesFromDictionary:jsonGraph];
                     if (pathSet.count > 0) {
                         [*optimizedPaths addObject: [jsonGraph.jsonGraphSentinalRefValue arrayByAddingObjectsFromArray:pathSet] ];
                     }
-                    return tuple;
                 }
                     break;
             }
         }
             break;
     }
-    
-    return nil;
 }
 
 @end
