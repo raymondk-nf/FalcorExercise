@@ -1,5 +1,5 @@
 //
-//  NSDictionary+jsonGraphMerge.h
+//  NSMutableDictionary+jsonGraphMerge.h
 //  FalcorObjC
 //
 //  Created by Raymond Kim on 1/3/18.
@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSDictionary (jsonGraphMerge)
-- (NSDictionary *)deepMergeJSONGraph:(NSDictionary *)otherJsonGraph;
+@interface NSMutableDictionary (jsonGraphMerge)
+- (void)deepMergeJSONGraph:(NSDictionary *)otherJsonGraph;
 @end

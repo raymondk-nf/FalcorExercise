@@ -7,7 +7,7 @@
 //
 
 #import "FalcorObjCService.h"
-#import "NSDictionary+jsonGraphMerge.h"
+#import "NSMutableDictionary+jsonGraphMerge.h"
 
 
 typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *optimizedPaths);
@@ -42,7 +42,7 @@ typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *op
 - (nullable NSDictionary *)getJSONGraph:(nonnull NSDictionary *)jsonGraph path:(nonnull JSONPathSet)jsonPath; {
     
     NSMutableArray *optimizedPaths = [NSMutableArray array];
-    NSDictionary *buildJsonGraph = [NSDictionary dictionary];
+    NSMutableDictionary *buildJsonGraph = [NSMutableDictionary dictionary];
     
     [optimizedPaths addObject:jsonPath];
     
@@ -53,7 +53,7 @@ typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *op
         [optimizedPaths removeObjectAtIndex:0];
         
         JsonGraphOptimizedPathsTuple *tupleResult = [self getJSONGraph:jsonGraph pathSet:pathSet optimizedPaths:&optimizedPaths];
-        buildJsonGraph = [buildJsonGraph deepMergeJSONGraph:tupleResult.jsonGraph];
+        [buildJsonGraph deepMergeJSONGraph:tupleResult.jsonGraph];
         
     }
     
@@ -61,7 +61,7 @@ typedef void (^GetJsonGraphCompletionBlock)(NSDictionary *jsonGraph, NSArray *op
 }
 
 
-//TODO: Pass a dictionary by reference and build
+//TODO: - Pass a dictionary by reference and build
 - (JsonGraphOptimizedPathsTuple *)getJSONGraph:(nullable NSDictionary*)jsonGraph pathSet:(JSONPathKeySet)pathSet optimizedPaths:(NSMutableArray **)optimizedPaths {
     
     switch (jsonGraph.jsonGraphType) {
