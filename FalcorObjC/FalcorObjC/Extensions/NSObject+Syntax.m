@@ -52,6 +52,18 @@ NSString * const syntaxAtom = @"atom";
     return JSONGraphSentinalPrimitive;
 }
 
+- (JSONType) jsonType {
+    if ([self isKindOfClass:[NSDictionary class]] || [self isKindOfClass:[NSMutableDictionary class]]) {
+        return JSONObjectType;
+    }
+    else if ([self isKindOfClass:[NSArray class]] || [self isKindOfClass:[NSMutableArray class]]) {
+        return JSONArrayType;
+    }
+    else {
+        return JSONValueType;
+    }
+}
+
 -(NSArray *)jsonGraphSentinalRefValue {
     if ([self isKindOfClass:[NSDictionary class]])
     {

@@ -11,7 +11,7 @@
 
 @interface FalcorObjCClient : NSObject
 
-- (nullable NSDictionary *)getJSON:(nonnull NSDictionary *)jsonGraph pathSet:(nonnull JSONPathSet)pathSet;
+- (id)getJSON:(nonnull NSDictionary *)jsonGraph pathSet:(nonnull JSONPathSet)pathSet;
 
 
 @end

@@ -257,24 +257,24 @@
                                         };
     XCTAssertTrue([correctGraph isEqual:resultGraph]);
 }
-//
-//- (void)testEmptyPathToJsonAtom {
-//    NSArray *jsonPath = @[ ];
-//    NSDictionary *modelJsonGraph = @{ @"$type": @"atom", @"value": @5 };
-//    NSDictionary *resultGraph;
-//    @try {
-//        resultGraph = [self.falcorClient getJSON:modelJsonGraph pathSet:jsonPath];
-//    } @catch (NSException *exception) {
-//        resultGraph = nil;
-//    }
-//    
-//    XCTAssertNotNil(resultGraph);
-//    
-//    id *correctGraph = @5;
-//    XCTAssertTrue([correctGraph isEqual:resultGraph]);
-//}
-//
-//// Test case, empty path to atom json, return atom
+
+- (void)testEmptyPathToJsonAtom {
+    NSArray *jsonPath = @[ ];
+    NSDictionary *modelJsonGraph = @{ @"$type": @"atom", @"value": @5 };
+    NSDictionary *resultGraph;
+    @try {
+        resultGraph = [self.falcorClient getJSON:modelJsonGraph pathSet:jsonPath];
+    } @catch (NSException *exception) {
+        resultGraph = nil;
+    }
+    
+    XCTAssertNotNil(resultGraph);
+    
+    id correctGraph = @5;
+    XCTAssertTrue([correctGraph isEqual:resultGraph]);
+}
+
+// Test case, empty path to atom json, return atom
 //func testEmptyPathToJsonAtom() {
 //    let jsonPath = [[JSONPathKey]]()
 //    let modelJsonGraph = JSONGraph.Sentinal(.Atom(

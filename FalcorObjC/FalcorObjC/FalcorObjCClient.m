@@ -11,12 +11,12 @@
 @implementation FalcorObjCClient
 
 
-- (nullable NSDictionary *)getJSON:(nonnull NSDictionary *)jsonGraph pathSet:(nonnull JSONPathSet)pathSet {
+- (id)getJSON:(nonnull NSDictionary *)jsonGraph pathSet:(nonnull JSONPathSet)pathSet {
     
     return [self getJSON:jsonGraph pathSet:pathSet rootJsonGraph:jsonGraph];
 }
 
-- (NSDictionary *)getJSON:(NSDictionary *)jsonGraph pathSet:(JSONPathSet)pathSet rootJsonGraph:(NSDictionary *)rootJsonGraph {
+- (id)getJSON:(NSDictionary *)jsonGraph pathSet:(JSONPathSet)pathSet rootJsonGraph:(NSDictionary *)rootJsonGraph {
     switch (jsonGraph.jsonGraphType) {
         case JSONGraphObject: {
             
@@ -48,20 +48,20 @@
                 }
             }
             
-            return [buildDictionary copy];
+            return buildDictionary;
         }
             break;
             
         case JSONGraphSentinal: {
             
-            NSDictionary *resultGraph = [self processSentinal:jsonGraph subPathSlice:pathSet rootJsonGraph:rootJsonGraph];
-            return (resultGraph) ?: ([jsonGraph isEqual:rootJsonGraph]) ? @{} : nil;
+            id result = [self processSentinal:jsonGraph subPathSlice:pathSet rootJsonGraph:rootJsonGraph];
+            return (result) ?: ([jsonGraph isEqual:rootJsonGraph]) ? @{} : nil;
         }
             break;
     }
 }
 
-- (NSDictionary *)processSentinal:(NSDictionary *)sentinalJson subPathSlice:(NSArray <JSONPathKeySet> *)subPathSlice rootJsonGraph:(NSDictionary *)rootJsonGraph {
+- (id)processSentinal:(NSDictionary *)sentinalJson subPathSlice:(NSArray <JSONPathKeySet> *)subPathSlice rootJsonGraph:(NSDictionary *)rootJsonGraph {
     
     switch (sentinalJson.jsonGraphSentinalType) {
         case JSONGraphSentinalAtom:
